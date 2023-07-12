@@ -19,11 +19,11 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 function validateInput(testInput) {
 
     if (testInput === "" || testInput === null || testInput === 0) {
-        return `Empty`
-    } else if ((isNaN(testInput===true))) {
+        return "Empty"
+    } else if ((isNaN(Number(testInput))===true)) {
         return 'Not a Number'
-    } else if ((isNaN(testInput===false))) {
-        return `Is a Number`
+    } else if ((isNaN(testInput)===false)) {
+        return "Is a Number"
     };
 }
 
@@ -37,19 +37,19 @@ function formSubmission(document, pilot, copilot, fuelLevel, cargoLevel) {
     let cargoStatus = document.getElementById('cargoStatus');
     let faultyItems = document.getElementById("faultyItems");
     
-    if (validateInput(pilot) === `Empty`|| validateInput(copilot) === `Empty`|| validateInput(fuelLevel) === `Empty`||validateInput(cargoLevel) === `Empty`) {
+    if (validateInput(pilot.value) === `Empty`|| validateInput(copilot.value) === `Empty`|| validateInput(fuelLevel.value) === `Empty`||validateInput(cargoLevel.value) === `Empty`) {
         alert(`All fields are required`);
     }
     
-    else if (validateInput(fuelLevel) === 'Not a Number'|| validateInput(cargoLevel) === 'Not a Number') {
+    else if (validateInput(fuelLevel.value) === "Not a Number"|| validateInput(cargoLevel.value) === "Not a Number") {
         alert(`Please enter numerical values for Fuel Level and Cargo Mass`);
-    } else if (validateInput(pilot)==='Is a Number'||validateInput(copilot)==='Is a Number') {
+    } else if (validateInput(pilot.value)==='Is a Number'||validateInput(copilot.value)==='Is a Number') {
         alert('Please do not enter numbers for name of pilot or co-pilot');
     } 
     else {
     pilotStatus.innerHTML = `Pilot ready`;
     copilotStatus.innerHTML = `Co-pilot ready`;
-    faultyItems.style.visibility = 'visible';
+    faultyItems.style.visibility = 'hidden';
     }
     
     if ((fuelLevel.value) < 10000) {
